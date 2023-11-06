@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.Extra_Extra_Vision.Rentalsystem;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

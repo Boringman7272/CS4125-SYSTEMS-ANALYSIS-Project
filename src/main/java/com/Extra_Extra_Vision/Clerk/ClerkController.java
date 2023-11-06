@@ -5,6 +5,7 @@ import com.Extra_Extra_Vision.Rentalsystem.CustomerClass;
 public class ClerkController {
     // process a rental
     public void processRental(CustomerClass cust, DVDGame disc) {
+        // TODO: DVDGame isn't implemented yet
         try {
             if (cust.canRent()) {
                 cust.rentItem(disc);
@@ -22,6 +23,7 @@ public class ClerkController {
 
     // process a return
     public void processReturn(CustomerClass cust, DVDGame disc) {
+        // TODO: DVDGame isn't implemented yet
         try {
             cust.returnItem(disc);
         }
@@ -33,11 +35,11 @@ public class ClerkController {
 
     // add a DVDGame to the list of DVDs available to rent
     public void addDvd(DVDGame disc) {
-        // Will add an entry to the database containing the list of DVDs available to rent once it is implemented
+        // TODO: DVDGame isn't implemented yet
     }
 
     // remove a DVDGame to the list of DVDs available to rent
     public void removeDvd(DVDGame disc) {
-         // Will remove an entry to the database containing the list of DVDs available to rent once it is implemented
+         // TODO: DVDGame isn't implemented yet
     }
 }

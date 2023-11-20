@@ -2,50 +2,57 @@ package com.Extra_Extra_Vision.Rentalsystem;
 
 import java.util.HashMap;
 import java.util.Map;
+import static com.Extra_Extra_Vision.Rentalsystem.LoginStateFactory.LoginState;
+import static com.Extra_Extra_Vision.Rentalsystem.LoginStateFactory.getLoginStateMessage;
 
-// This is the main class for handling logins in the rental system
-public class LoginClass {
-    // Map to store username and passwords - In a real-world scenario, this should be replaced with a more secure system
+public class LoginClass  extends Customer {
     private Map<String, String> loginCredentials;
-    
-    // Constructor to initialize the LoginClass object
+
     public LoginClass() {
         loginCredentials = new HashMap<>();
     }
 
-    // Method to register a new customer
-    public void registerCustomer(String username, String password, CustomerClass customer) {
-        // In real scenario, add validation for username and password, and encrypt password
+    public String registerCustomer(String username, String password, CustomerClass customer) {
         if (!loginCredentials.containsKey(username)) {
-            loginCredentials.put(username, password);
+            loginCredentials.put(username, encryptPassword(password));
             // Additional logic to add customer to the database or customer management system
+            return getLoginStateMessage(LoginState.LOGGED_IN);
         } else {
-            throw new IllegalArgumentException("Username already exists.");
+            return getLoginStateMessage(LoginState.LOGIN_FAILED);
         }
     }
-    
-    // Method to handle customer login
-    public boolean login(String username, String password) {
-        // Check if username exists
-        if (loginCredentials.containsKey(username)) {
-            // Compare the provided password with the stored password
-            return password.equals(loginCredentials.get(username));
+
+    public String login(String username, String password) {
+        if (loginCredentials.containsKey(username) && checkPassword(password, loginCredentials.get(username))) {
+            return getLoginStateMessage(LoginState.LOGGED_IN);
         } else {
-            return false;
+            return getLoginStateMessage(LoginState.LOGIN_FAILED);
         }
     }
-    
-    // Method to handle customer logout (Optional based on your system design)
-    public void logout(String username) {
+
+    public String logout(String username) {
         // Logic to handle logout, like updating system logs or customer status
+        return getLoginStateMessage(LoginState.LOGGED_OUT);
     }
-    
-    // Method to reset password - In real world, include security questions or email verification
-    public void resetPassword(String username, String oldPassword, String newPassword) {
-        if (loginCredentials.containsKey(username) && loginCredentials.get(username).equals(oldPassword)) {
-            loginCredentials.put(username, newPassword);
+
+    public String resetPassword(String username, String oldPassword, String newPassword) {
+        if (loginCredentials.containsKey(username) && checkPassword(oldPassword, loginCredentials.get(username))) {
+            loginCredentials.put(username, encryptPassword(newPassword));
+            return getLoginStateMessage(LoginState.PASSWORD_RESET_SUCCESSFUL);
         } else {
-            throw new IllegalArgumentException("Invalid username or password.");
+            return getLoginStateMessage(LoginState.PASSWORD_RESET_FAILED);
         }
+    }
+
+    private String encryptPassword(String password) {
+        // Password encryption logic should be implemented here
+        return password; // This is a placeholder
+    }
+
+    private boolean checkPassword(String inputPassword, String storedPassword) {
+        // Password comparison logic should be implemented here
+        return inputPassword.equals(storedPassword); // This is a placeholder
     }
 }
+
+

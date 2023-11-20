@@ -2,8 +2,8 @@ package com.Extra_Extra_Vision.Rentalsystem;
 
 import java.util.List;
 
-public abstract class Customer {
-    protected String customerID;
+public abstract class Customer extends LoginClass {
+    protected int customerID;
     protected String name;
     protected String address;
     protected String phone;

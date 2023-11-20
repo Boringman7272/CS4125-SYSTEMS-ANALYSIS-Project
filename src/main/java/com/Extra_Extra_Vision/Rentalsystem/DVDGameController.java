@@ -3,6 +3,8 @@ package com.Extra_Extra_Vision.Rentalsystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.Extra_Extra_Vision.Rentalsystem.Observer.Observer;
+
 @RestController
 @RequestMapping("/dvdgames")
 public class DVDGameController {

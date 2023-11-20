@@ -1,4 +1,6 @@
-package com.Extra_Extra_Vision.Rentalsystem;
+package com.Extra_Extra_Vision.Rentalsystem.Observer;
+
+import com.Extra_Extra_Vision.Rentalsystem.State;
 
 public interface Subject {
     public void registerObserver(Observer observer);

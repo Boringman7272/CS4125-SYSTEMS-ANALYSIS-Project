@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.hibernate.query.sqm.StrictJpaComplianceViolation;
 
+import com.Extra_Extra_Vision.Rentalsystem.Observer.Observer;
+
 // This is the main class for Customer in the rental system
 public class CustomerClass extends Customer implements Observer {
     // Attributes of the customer

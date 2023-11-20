@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import com.Extra_Extra_Vision.Rentalsystem.Observer.Subject;
+
+import com.Extra_Extra_Vision.Rentalsystem.Observer.Observer;
+
 @Entity
 public class DVDGame implements Subject {
     @Id

@@ -13,6 +13,10 @@ public class DVDGameController {
     // Endpoints for renting, returning DVD games, etc.
     // for soph
     public void markAsAvailable(Observer observer, DVDGame dvdGame) {
-        
+        dvdGame.setAsAvailable(observer, new AvailableState());
+    }
+
+    public void markAsRented(Observer observer, DVDGame dvdGame) {
+        dvdGame.setAsRented(observer, new RentedState());
     }
 }

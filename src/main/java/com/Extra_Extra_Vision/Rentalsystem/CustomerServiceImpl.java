@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void rentItem(String customerID, String itemID) {
+    public void rentItem(String customerID, int itemID) {
         CustomerClass customer = customerMap.get(customerID);
         if (customer != null && canRent(customerID)) {
             customer.getCurrentRentals().add(itemID);
@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void returnItem(String customerID, String itemID) {
+    public void returnItem(String customerID, int itemID) {
         CustomerClass customer = customerMap.get(customerID);
         if (customer != null && customer.getCurrentRentals().contains(itemID)) {
             customer.getCurrentRentals().remove(itemID);

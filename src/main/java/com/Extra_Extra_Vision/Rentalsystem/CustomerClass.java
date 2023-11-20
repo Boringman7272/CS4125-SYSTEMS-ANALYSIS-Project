@@ -11,7 +11,7 @@ public class CustomerClass {
     private String customerID;
     private String name;
     private String address;
-    private String phone;
+    private double phoneNum;
     private String email;
     private String accountStatus;
     private List<String> currentRentals; // List to keep track of current rentals on customers account
@@ -22,7 +22,7 @@ public class CustomerClass {
         this.customerID = customerID;
         this.name = name;
         this.address = address;
-        this.phone = phone;
+        this.phoneNum = 00000000000;
         this.email = email;
         this.accountStatus = "Active"; // Default status is 'Active' as if a customer class is created it should be used
         this.currentRentals = new ArrayList<>(); // Initialize the list of current rentals should be init empty
@@ -128,6 +128,19 @@ public class CustomerClass {
     // Updates the balance
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setAddress(String address){
+        this.address = address;
+    }
+    public void setphoneNum(double phoneNum){
+        this.phoneNum = phoneNum;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
     
     // Validation methods

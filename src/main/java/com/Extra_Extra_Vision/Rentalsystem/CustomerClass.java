@@ -8,17 +8,17 @@ import java.util.List;
 // This is the main class for Customer in the rental system
 public class CustomerClass extends Customer {
     // Attributes of the customer
-    private String customerID;
+    private int customerID;
     private String name;
     private String address;
-    private double phoneNum;
+    private int phoneNum;
     private String email;
     private String accountStatus;
     private List<String> currentRentals; // List to keep track of current rentals on customers account
-    private double balance; // Customer's balance for renting
+    private float balance; // Customer's balance for renting
 
     // Constructor to initialize a Customer object
-    public CustomerClass(String customerID, String name, String address, String phone, String email) {
+    public CustomerClass(int customerID, String name, String address, String phone, String email) {
         this.customerID = customerID;
         this.name = name;
         this.address = address;
@@ -26,7 +26,7 @@ public class CustomerClass extends Customer {
         this.email = email;
         this.accountStatus = "Active"; // Default status is 'Active' as if a customer class is created it should be used
         this.currentRentals = new ArrayList<>(); // Initialize the list of current rentals should be init empty
-        this.balance = 0.0; // Set the balance to zero init
+        this.balance = 0.0f; // Set the balance to zero init
     }
 
     // Business Logic Methods
@@ -43,7 +43,7 @@ public class CustomerClass extends Customer {
     
     // Returns the customer ID
     
-    public String getCustomerID() {
+    public int getCustomerID() {
         return customerID;
     }
     
@@ -61,8 +61,8 @@ public class CustomerClass extends Customer {
     
     // Returns the customer's phone number
   
-    public String getPhone() {
-        return phone;
+    public int getPhone() {
+        return phoneNum;
     }
     
     // Returns the customer's email
@@ -85,7 +85,7 @@ public class CustomerClass extends Customer {
     
     // Returns the customer's balance
     
-    public double getBalance() {
+    public float getBalance() {
         return balance;
     }
     
@@ -99,7 +99,7 @@ public class CustomerClass extends Customer {
     }
     
     // Updates the balance
-    public void setBalance(double balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 
@@ -109,7 +109,7 @@ public class CustomerClass extends Customer {
     public void setAddress(String address){
         this.address = address;
     }
-    public void setphoneNum(double phoneNum){
+    public void setphoneNum(int phoneNum){
         this.phoneNum = phoneNum;
     }
     public void setEmail(String email){

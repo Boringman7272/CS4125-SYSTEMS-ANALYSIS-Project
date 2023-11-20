@@ -1,13 +1,15 @@
 package com.Extra_Extra_Vision.Clerk;
 
+import com.Extra_Extra_Vision.Rentalsystem.AvailableState;
 import com.Extra_Extra_Vision.Rentalsystem.CustomerClass;
+import com.Extra_Extra_Vision.Rentalsystem.DVDGame;
 
 public class ClerkController {
     // process a rental
     public void processRental(CustomerClass cust, DVDGame disc) {
         // TODO: DVDGame isn't implemented yet
         try {
-            if (cust.canRent()) {
+            if (disc.getState() == new AvailableState()) {
                 cust.rentItem(disc);
             }
             else {

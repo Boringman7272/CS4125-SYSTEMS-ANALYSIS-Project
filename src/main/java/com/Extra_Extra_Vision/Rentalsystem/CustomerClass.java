@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // This is the main class for Customer in the rental system
-public class CustomerClass {
+public class CustomerClass extends Customer {
     // Attributes of the customer
     private String customerID;
     private String name;
@@ -31,87 +31,60 @@ public class CustomerClass {
 
     // Business Logic Methods
     
-    // Method to check if the customer can rent items
-    public boolean canRent() {
-        // Customer can rent if account is active and balance is not negative
-        // This is simply to be used for checks and to stop weird things like negative balances renting etc.
-        return "Active".equals(accountStatus) && balance >= 0;
-    }
-    
     // Method to handle renting an item
-    public void rentItem(String itemID) {
-        if (canRent()) {
-            currentRentals.add(itemID);
-            // Additional logic for handling the inventory and transaction will be implemented here
-            // More then likely many checks will be added to secure the process of renting
-        } else {
-            // Handle the scenario where the customer cannot rent items
-            // THis will be something like making a request to the GUI to cause a warning or top up request to appear
-        }
-    }
     
     // Method to handle returning an item this is being implemented one at a time here until rent logic is complete
     // Method To allow bulk returns won't be implemented yet as I don't want to lock myself to a template just yet
-    public void returnItem(String itemID) {
-        if (currentRentals.contains(itemID)) {
-            currentRentals.remove(itemID);
-            // Additional logic for handling the inventory and transaction should be implemented here
-            // Same thing as before this will require addition checks to make sure the app is working correctly
-        } else {
-            // Handle the scenario where the item is not part of the current rentals
-        }
-    }
-    
-    // Method to handle payment of fees
-    // A basic check implemented here more to be added.
-    public void payFees(double amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Cannot pay a negative amount.");
-        }
-        balance -= amount;
-    }
-    
+
     // Accessor methods (getters) for each attribute
 
     // Simple enough just used for accessing stored member variables.
     // Not sure if my commenting here is excessive or not but added it for clarity in presentation
     
     // Returns the customer ID
+    
     public String getCustomerID() {
         return customerID;
     }
     
     // Returns the customer's name
+    
     public String getName() {
         return name;
     }
     
     // Returns the customer's address
+    
     public String getAddress() {
         return address;
     }
     
     // Returns the customer's phone number
+  
     public String getPhone() {
         return phone;
     }
     
     // Returns the customer's email
+   
     public String getEmail() {
         return email;
     }
     
     // Returns the customer's account status
+   
     public String getAccountStatus() {
         return accountStatus;
     }
     
     // Returns the list of current rentals for the customer
+   
     public List<String> getCurrentRentals() {
         return currentRentals;
     }
     
     // Returns the customer's balance
+    
     public double getBalance() {
         return balance;
     }

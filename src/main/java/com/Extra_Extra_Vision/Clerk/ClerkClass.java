@@ -2,7 +2,9 @@ package com.Extra_Extra_Vision.Clerk;
 
 import java.util.ArrayList;
 
-public class ClerkClass extends Clerk {
+import com.Extra_Extra_Vision.Rentalsystem.Observer.Observer;
+
+public class ClerkClass extends Clerk implements Observer {
     // declare attributes for the Clerk object
     private static ArrayList<ClerkClass> accounts = new ArrayList<ClerkClass>(); // the static ArrayList is used for indexing the Clerk accounts
     private String username;
@@ -55,5 +57,11 @@ public class ClerkClass extends Clerk {
         if (this.active == true) {
             accounts.remove(accountId);
         }
+    }
+
+    //Observer update method
+    @Override
+    public void update(Observer observer, int itemID, State state) {
+        //implement at a later date
     }
 }

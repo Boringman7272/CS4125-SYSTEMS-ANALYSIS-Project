@@ -5,8 +5,10 @@ package com.Extra_Extra_Vision.Rentalsystem;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.query.sqm.StrictJpaComplianceViolation;
+
 // This is the main class for Customer in the rental system
-public class CustomerClass extends Customer {
+public class CustomerClass extends Customer implements Observer {
     // Attributes of the customer
     private String customerID;
     private String name;
@@ -14,7 +16,7 @@ public class CustomerClass extends Customer {
     private double phoneNum;
     private String email;
     private String accountStatus;
-    private List<String> currentRentals; // List to keep track of current rentals on customers account
+    private List<Integer> currentRentals; // List to keep track of current rentals on customers account
     private double balance; // Customer's balance for renting
 
     // Constructor to initialize a Customer object
@@ -79,7 +81,7 @@ public class CustomerClass extends Customer {
     
     // Returns the list of current rentals for the customer
    
-    public List<String> getCurrentRentals() {
+    public List<Integer> getCurrentRentals() {
         return currentRentals;
     }
     
@@ -140,5 +142,16 @@ public class CustomerClass extends Customer {
         this.email = email;
     }
     
-    
+    //observer method
+    @Override
+    public void update(Observer observer, int itemID, State state) {
+        if (currentRentals.contains(itemID)) {
+            try {
+                //add endpoint for returning success message
+            }
+            catch (Exception e) {
+                //add endpoint for error message and log exception
+            }
+        }
+    }
 }

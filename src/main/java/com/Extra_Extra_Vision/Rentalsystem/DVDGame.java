@@ -1,5 +1,7 @@
 package com.Extra_Extra_Vision.Rentalsystem;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,12 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 @Entity
-public class DVDGame {
+public class DVDGame implements Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int itemID;
     private String title;
     private String genre;
+    private ArrayList<Observer> observers = new ArrayList<>();
+    private Observer observer;
 
     @Transient
     private State state;
@@ -61,11 +65,31 @@ public class DVDGame {
         this.state = state;
     }
 
-    public void markAsRented() {
-        state.markAsRented(this);
+    //methods from Subject superclass
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
     }
 
-    public void markAsAvailable() {
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer ob : observers) {
+            ob.update(this.observer, this.itemID, this.state);
+        }
+    }
+
+    @Override
+    public void setAsAvailable(Observer observer, State state) {
         state.markAsAvailable(this);
+    }
+
+    @Override
+    public void setAsRented(Observer observer, State state) {
+        state.markAsRented(this);
     }
 }

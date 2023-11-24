@@ -1,4 +1,5 @@
 package main.java.com.Extra_Extra_Vision.Rentalsystem.Decorator;
+
 //abstract class, base class for decoratorsr
 public abstract class RentalDecorator implements Rental {
     protected Rental decoratedRental;
